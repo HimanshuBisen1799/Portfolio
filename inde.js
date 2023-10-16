@@ -1,92 +1,90 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const navbar = document.querySelector(".navbar");
-    const scrollUpBtn = document.querySelector(".scroll-up-btn");
-    const menuBtn = document.querySelector(".menu-btn");
-    const menu = document.querySelector(".navbar .menu");
-    const menuBtnIcon = document.querySelector(".menu-btn i");
-  
-    window.addEventListener("scroll", function () {
-      // Sticky navbar on scroll script
-      if (window.scrollY > 20) {
-        navbar.classList.add("sticky");
-      } else {
-        navbar.classList.remove("sticky");
-      }
-  
-      // Scroll-up button show/hide script
-      if (window.scrollY > 500) {
-        scrollUpBtn.classList.add("show");
-      } else {
-        scrollUpBtn.classList.remove("show");
-      }
-    });
-  
-    // Slide-up script
-    scrollUpBtn.addEventListener("click", function () {
-      document.documentElement.scrollTo({ top: 0, behavior: "smooth" });
-    });
-  
-    // Smooth scroll on Menu Items click
-    document.querySelectorAll(".navbar .menu li a").forEach(function (link) {
-      link.addEventListener("click", function () {
-        document.documentElement.style.scrollBehavior = "smooth";
-      });
-    });
-  
-    // Toggle Navbar
-    menuBtn.addEventListener("click", function () {
-      menu.classList.toggle("active");
-      menuBtnIcon.classList.toggle("active");
-    });
-  
-    // Typing Text Animation
-    var typedOptions = {
-      strings: [
-        "Fullstack Developer",
-        "Software Developer",
-        "Python Developer",
-        "Founder",
-        "Author",
-      ],
-      typeSpeed: 100,
-      backSpeed: 60,
-      loop: true,
-    };
-  
-    new Typed(".typing", typedOptions);
-    new Typed(".typing-2", typedOptions);
-  
-    // Owl Carousel
-    const carousel = document.querySelector(".carousel");
-    if (carousel) {
-      new OwlCarousel(carousel, {
-        margin: 20,
-        loop: true,
-        autoplay: true,
-        autoplayTimeout: 2000,
-        autoplayHoverPause: true,
-        responsive: {
-          0: {
-            items: 1,
-            nav: false,
-          },
-          600: {
-            items: 2,
-            nav: false,
-          },
-          1000: {
-            items: 3,
-            nav: false,
-          },
-        },
-      });
+$(document).ready(function () {
+  $(window).scroll(function () {
+    //  sticky navbar on scroll script  //
+    if (this.scrollY > 20) {
+      $(".navbar").addClass("sticky");
+    } else {
+      $(".navbar").removeClass("sticky");
+    }
+
+    //  scroll-up button show/hide script  //
+    if (this.scrollY > 500) {
+      $(".scroll-up-btn").addClass("show");
+    } else {
+      $(".scroll-up-btn").removeClass("show");
     }
   });
-  
-  // Owl Carousel class
-  class OwlCarousel {
-    constructor(element, options) {
-      // Initialize Owl Carousel here
+
+  //  slide-up script  //
+
+  $(".scroll-up-btn").click(function () {
+    $("html").animate({ scrollTop: 0 });
+    //  removing smooth scroll on slide-up button click  //
+    $("html").css("scrollBehavior", "auto");
+  });
+
+  $(".navbar .menu li a").click(function () {
+    //  Smooth scroll on Menu Items click  //
+
+    $("html").css("scrollBehavior", "smooth");
+  });
+
+  //  Toggle Navbar  //
+
+  $(".menu-btn").click(function () {
+    $(".navbar .menu").toggleClass("active");
+    $(".menu-btn i").toggleClass("active");
+  });
+
+  //  Typing Text Animation  //
+
+  var typed = new Typed(".typing", {
+    strings: [
+      "Fullstack Developer",
+      "Software Developer",
+      "Python Developer",
+      "Founder",
+      "Author"
+    ],
+    typeSpeed: 100,
+    backSpeed: 60,
+    loop: true
+  });
+
+  var typed = new Typed(".typing-2", {
+    strings: [
+      "Fullstack Developer",
+      "Software Developer",
+      "Python Developer",
+      "Founder",
+      "Author"
+    ],
+    typeSpeed: 100,
+    backSpeed: 60,
+    loop: true
+  });
+
+  //  Owl Carousel  //
+
+  $(".carousel").owlCarousel({
+    margin: 20,
+    loop: true,
+    autoplay: true,
+    autoplayTimeOut: 2000,
+    autoplayHoverPause: true,
+    responsive: {
+      0: {
+        items: 1,
+        nav: false
+      },
+      600: {
+        items: 2,
+        nav: false
+      },
+      1000: {
+        items: 3,
+        nav: false
+      }
     }
-  }
-  
+  });
+});
