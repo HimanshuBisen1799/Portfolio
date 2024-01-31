@@ -39,7 +39,7 @@
           <div class="text-1">Hello, This is</div>
           <div class="text-2">Himanshu Bisen</div>
           <div class="text-3">And I'm a <span class="typing">Web Developer</span></div>
-          <a href="#">Hire me</a>
+          <a href="#" onclick="redirectToWhatsApp()">Hire me</a>
         </div>
       </div>
     </section>
@@ -322,6 +322,19 @@
         <a href="https://www.linkedin.com/in/himanshu-bisen-279505227/"> Himanshu Bisen</a> | <span class="far fa-copyright"></span> 2022 All Rights Reserved. Privacy Policy
       </span>
     </footer>
-  <script src="inde.js"></script>
+  <script src="inde.js">
+      <script>
+function redirectToWhatsApp() {
+    // Replace the phone number with your own
+    var phoneNumber = "9691227712";
+    
+    // Form the WhatsApp URL
+    var url = "https://wa.me/" + phoneNumber;
+
+    // Redirect the user to WhatsApp
+    window.location.href = url;
+}
+</script>
+  </script>
   </body>
 </html>
